@@ -11,8 +11,8 @@ public class Example2_Inputchar {
 
             System.out.println("--- Вміст файлу " + filename + " ---");
             
-            while (myFile.ready()) {
-                System.out.print((char) myFile.read());
+            while (myFile.ready()) { //перевірка на вміст
+                System.out.print((char) myFile.read()); //зчитування
             }
             
             System.out.println("\n--- Кінець файлу ---");

@@ -22,7 +22,7 @@ public class Example6_Potik {
                 charCode = input.read();
                 x = myKey.charAt(index);
 
-                output.write(charCode ^ x);
+                output.write(charCode ^ x); // XOR шифрування
 
                 index++;
                 if (index == myKey.length()) {

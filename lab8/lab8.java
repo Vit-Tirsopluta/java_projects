@@ -16,7 +16,7 @@ public class lab8 {
                 
                 int keyChar = key.charAt(keyIndex);
 
-                output.write(charCode ^ keyChar);
+                output.write(charCode ^ keyChar); //XOR шифрування
 
                 keyIndex++;
                 if (keyIndex == key.length()) {

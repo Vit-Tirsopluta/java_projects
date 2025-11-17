@@ -10,7 +10,7 @@ public class Example1_Systemin {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "CP1251"));
 
-            while ((myKey = br.read()) != 'q') {
+            while ((myKey = br.read()) != 'q') { //зчитування з перевіркою
                 System.out.println(myKey + ": " + (char) myKey);
             }
             br.close();
