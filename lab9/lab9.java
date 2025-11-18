@@ -33,17 +33,18 @@ public class lab9{
 
         byte[] buf1 = createAndPrintArray("Перший потік", rand);
         byte[] buf2 = createAndPrintArray("Другий потік", rand);
-        byte[] buf3 = createAndPrintArray("Третій потік", rand);
+        //byte[] buf3 = createAndPrintArray("Третій потік", rand);
 
         InputStream in1 = new ByteArrayInputStream(buf1);
         InputStream in2 = new ByteArrayInputStream(buf2);
-        InputStream in3 = new ByteArrayInputStream(buf3);
+        //InputStream in3 = new ByteArrayInputStream(buf3);
 
         Vector<InputStream> myVector = new Vector<>();
         myVector.add(in1);
         myVector.add(in2);
-        myVector.add(in3);
-
+        //myVector.add(in3);
+        
+        InputStream file = new SequenceInputStream(in1, in2);
         Enumeration<InputStream> num = myVector.elements();
 
         InputStream inAll = new SequenceInputStream(num);
@@ -61,6 +62,6 @@ public class lab9{
         inAll.close();
         in1.close();
         in2.close();
-        in3.close();
+        //in3.close();
     }
 }
