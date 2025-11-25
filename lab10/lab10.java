@@ -1,12 +1,24 @@
 package lab10;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.Point;
 
 public class lab10{
     public static void main(String args[]){
         JFrame myFrame = new JFrame("Приховане вікно");
         myFrame.setBounds(50, 60, 400,300);
-        myFrame.setVisible(false);
-        System.out.println("Window's location is x = " + myFrame.getX() + ", location y = " + myFrame.getY());
+        myFrame.setVisible(true);
+        Point location = myFrame.getLocation();
+        int x = location.x;
+        int y = location.y;
+
+        myFrame.setResizable(true);
+
+        
+        System.out.println("Window's location x is = " + myFrame.getX() + ", location y = " + myFrame.getY());
+        System.out.println("Window's location x and y are = " + myFrame.getLocation());
+        System.out.println("Window's location x and y are = " + myFrame.getBounds());
+        System.out.println("X: " + x + ", Y: " + y);
+
         System.out.println("Window's title is " + myFrame.getTitle());
         System.out.println("Window's state is " + myFrame.getState());
     }
