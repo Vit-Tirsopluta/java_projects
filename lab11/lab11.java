@@ -4,58 +4,56 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class lab11 extends JFrame implements MouseListener, MouseMotionListener, KeyListener {
+public class lab11 extends JFrame {
     
-    Point p1;
+    private Point p1;
 
     public lab11() {
-        super("Варіант 10: Малювання та Очищення");
-        
-        addMouseListener(this);
-        addMouseMotionListener(this);
-        addKeyListener(this);
-        
-        setSize(600, 400);
-        setLocation(100, 100);
-        setVisible(true);
+        setSize(800, 600);
+        setLocation(260, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        MyMouseAdapter mouseAdapter = new MyMouseAdapter();
+        addMouseListener(mouseAdapter);
+        addMouseMotionListener(mouseAdapter);
+        
+        addKeyListener(new MyKeyAdapter());
+        
+        setVisible(true);
         requestFocus();
     }
 
+    class MyMouseAdapter extends MouseAdapter {
+        
+        @Override
         public void mousePressed(MouseEvent e) {
-        p1 = e.getPoint();
-    }
+            p1 = e.getPoint();
+        }
 
-    public void mouseClicked(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-
-
-    public void mouseDragged(MouseEvent e) {
-        if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
-            
-            Point p2 = e.getPoint();
-            Graphics g = getGraphics();
-            
-            g.setColor(Color.BLACK);
-            g.drawLine(p1.x, p1.y, p2.x, p2.y);
-            
-            p1 = p2;
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            if ((e.getModifiersEx() & InputEvent.BUTTON1_DOWN_MASK) != 0) {
+                
+                Point p2 = e.getPoint();
+                Graphics g = getGraphics();
+                
+                g.setColor(Color.BLACK);
+                g.drawLine(p1.x, p1.y, p2.x, p2.y);
+                
+                p1 = p2;
+            }
         }
     }
 
-    public void mouseMoved(MouseEvent e) {}
-
-    public void keyPressed(KeyEvent e) {
-        repaint();
+    class MyKeyAdapter extends KeyAdapter {
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            repaint();
+        }
     }
 
-    public void keyTyped(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
-
     public static void main(String[] args) {
-        new lab11();
+        SwingUtilities.invokeLater(() -> new lab11());
     }
 }
