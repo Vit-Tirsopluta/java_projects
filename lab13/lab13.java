@@ -38,7 +38,7 @@ public class lab13 extends Frame implements ActionListener, ItemListener {
         Menu menuTable = new Menu("Таблиця");
 
         CheckboxMenuItem checkAutofit = new CheckboxMenuItem("Автопідбір");
-        checkAutofit.addItemListener(this);
+        checkAutofit.setState(true);
         menuTable.add(checkAutofit);
 
         menuTable.addSeparator();
@@ -47,6 +47,7 @@ public class lab13 extends Frame implements ActionListener, ItemListener {
         itemFormula.addActionListener(this);
         menuTable.add(itemFormula);
 
+        myMenuBar.add(menuFormat);
         myMenuBar.add(menuFormat);
         myMenuBar.add(menuTable);
 
